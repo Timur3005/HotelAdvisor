@@ -1,10 +1,8 @@
 package com.example.hoteladvisor.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hoteladvisor.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.hoteladvisor.databinding.ActivityMainBinding
-import java.lang.RuntimeException
 
 class MainActivity : AppCompatActivity() {
 
