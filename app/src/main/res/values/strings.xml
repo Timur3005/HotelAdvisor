@@ -13,4 +13,5 @@
     <string name="food">Питание</string>
     <string name="info_about_client">Информация о покупателе</string>
     <string name="info_for_client">Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту</string>
+    <string name="super_btn">Супер!</string>
 </resources>
