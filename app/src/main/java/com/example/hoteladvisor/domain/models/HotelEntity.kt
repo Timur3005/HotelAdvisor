@@ -1,4 +1,4 @@
-package com.example.domain.models
+package com.example.hoteladvisor.domain.models
 
 data class HotelEntity(
     val id: Int,
