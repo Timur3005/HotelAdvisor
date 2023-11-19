@@ -1,5 +1,6 @@
 package com.example.hoteladvisor.data.remote
 
+import androidx.lifecycle.LiveData
 import com.example.hoteladvisor.data.remote.models.HotelDto
 import com.example.hoteladvisor.data.remote.models.ReservationDto
 import com.example.hoteladvisor.data.remote.models.RoomsContainerDto

@@ -2,6 +2,7 @@ package com.example.hoteladvisor.data.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 object ApiFactory {
     private const val BASE_URL = "https://run.mocky.io/v3/"
@@ -11,6 +12,6 @@ object ApiFactory {
         .baseUrl(BASE_URL)
         .build()
 
-    val apiServie = retrofit.create(ApiFactory::class.java)
+    val apiService: ApiService = retrofit.create(ApiService::class.java)
 
 }
