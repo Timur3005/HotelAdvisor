@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/hotelFragment"
-        android:name="com.example.hoteladvisor.HotelFragment"
+        android:name="com.example.hoteladvisor.presentation.HotelFragment"
         android:label="fragment_hotel"
         tools:layout="@layout/fragment_hotel" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/hotelRoomsFragment"
-        android:name="com.example.hoteladvisor.HotelRoomsFragment"
+        android:name="com.example.hoteladvisor.presentation.HotelRoomsFragment"
         android:label="fragment_hotel_rooms"
         tools:layout="@layout/fragment_hotel_rooms" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservationFragment"
-        android:name="com.example.hoteladvisor.ReservationFragment"
+        android:name="com.example.hoteladvisor.presentation.ReservationFragment"
         android:label="fragment_reservation"
         tools:layout="@layout/fragment_reservation" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/afterPayFragment"
-        android:name="com.example.hoteladvisor.AfterPayFragment"
+        android:name="com.example.hoteladvisor.presentation.AfterPayFragment"
         android:label="fragment_after_pay"
         tools:layout="@layout/fragment_after_pay" >
         <action
