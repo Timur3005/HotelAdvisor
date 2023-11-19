@@ -8,7 +8,7 @@ class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
     private val binding: ActivityMainBinding
-        get() = _binding ?: throw RuntimeException("binding isn't exist")
+        get() = _binding ?: throw RuntimeException("binding doesn't exist")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

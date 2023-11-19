@@ -11,7 +11,7 @@ class ReservationFragment : Fragment() {
 
     private var _binding: FragmentReservationBinding? = null
     private val binding: FragmentReservationBinding
-        get() = _binding ?: throw RuntimeException("binding isn't exist")
+        get() = _binding ?: throw RuntimeException("binding doesn't exist")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -11,7 +11,7 @@ class HotelFragment : Fragment() {
 
     private var _binding: FragmentHotelBinding? = null
     private val binding: FragmentHotelBinding
-        get() = _binding ?: throw RuntimeException("binding isn't exist")
+        get() = _binding ?: throw RuntimeException("binding doesn't exist")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
