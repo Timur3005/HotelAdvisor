@@ -45,8 +45,20 @@ class HotelFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory)[HotelViewModel::class.java]
         viewModel.getHotel()
-        viewModel.hotel.observe(viewLifecycleOwner){
-            Log.d("HotelFragment", "$it")
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        viewModel.hotelState.observe(viewLifecycleOwner) {
+            when (it) {
+                Loading -> {
+
+                }
+
+                is ShowHotel -> {
+
+                }
+            }
         }
     }
 
