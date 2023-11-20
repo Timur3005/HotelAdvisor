@@ -7,7 +7,7 @@ import com.example.hoteladvisor.domain.models.ReservationEntity
 
 interface HotelRepository {
 
-    suspend fun getHotel(): LiveData<HotelEntity>
-    suspend fun getHotelRooms(): LiveData<List<HotelRoomsEntity>>
-    suspend fun getReservation(): LiveData<ReservationEntity>
+    suspend fun getHotel(): HotelEntity
+    suspend fun getHotelRooms(): List<HotelRoomsEntity>
+    suspend fun getReservation(): ReservationEntity
 }

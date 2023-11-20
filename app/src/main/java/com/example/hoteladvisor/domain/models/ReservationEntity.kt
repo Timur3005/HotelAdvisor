@@ -1,19 +1,19 @@
 package com.example.hoteladvisor.domain.models
 
 data class ReservationEntity(
-    val id: Int,
-    val hotelName: String,
-    val hotelAddress: String,
-    val hotelRating: String,
-    val ratingName: String,
-    val departure: String,
-    val arrivalCountry: String,
-    val tourDateStart: String,
-    val tourDateStop: String,
-    val numberOfNights: Int,
-    val roomDescription: String,
-    val nutrition: String,
-    val tourPrice: Int,
-    val fuelCharge: Int,
-    val serviceCharge: Int
+    val id: Int?,
+    val hotelName: String?,
+    val hotelAddress: String?,
+    val hotelRating: Int?,
+    val ratingName: String?,
+    val departure: String?,
+    val arrivalCountry: String?,
+    val tourDateStart: String?,
+    val tourDateStop: String?,
+    val numberOfNights: Int?,
+    val roomDescription: String?,
+    val nutrition: String?,
+    val tourPrice: Int?,
+    val fuelCharge: Int?,
+    val serviceCharge: Int?
 )

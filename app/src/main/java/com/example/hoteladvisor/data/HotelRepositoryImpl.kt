@@ -1,7 +1,5 @@
 package com.example.hoteladvisor.data
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.hoteladvisor.data.mapper.Mapper
 import com.example.hoteladvisor.data.remote.ApiService
 import com.example.hoteladvisor.domain.HotelRepository
@@ -14,17 +12,17 @@ class HotelRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
     private val mapper: Mapper
 ): HotelRepository {
-    override suspend fun getHotel(): LiveData<HotelEntity> {
-        return MutableLiveData(
-            mapper.mapHotelDtoToHotelEntity(apiService.getHotel())
-        )
+    override suspend fun getHotel(): HotelEntity {
+        return mapper.mapHotelDtoToHotelEntity(apiService.getHotel())
     }
 
-    override suspend fun getHotelRooms(): LiveData<List<HotelRoomsEntity>> {
-        TODO("Not yet implemented")
+    override suspend fun getHotelRooms(): List<HotelRoomsEntity> {
+        return apiService.getRooms().rooms?.map {
+            mapper.mapHotelRoomsDtoToHotelRoomsEntity(it)
+        } ?: throw RuntimeException("container is empty")
     }
 
-    override suspend fun getReservation(): LiveData<ReservationEntity> {
-        TODO("Not yet implemented")
+    override suspend fun getReservation(): ReservationEntity {
+        return mapper.mapReservationDtoToReservationEntity(apiService.getReservation())
     }
 }

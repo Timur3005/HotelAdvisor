@@ -1,4 +1,4 @@
-package com.example.hoteladvisor.presentation
+package com.example.hoteladvisor.presentation.hotel
 
 import android.os.Bundle
 import android.view.LayoutInflater
