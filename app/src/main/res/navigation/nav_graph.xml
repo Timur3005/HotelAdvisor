@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/hotelFragment"
-        android:name="com.example.hoteladvisor.presentation.HotelFragment"
+        android:name="com.example.hoteladvisor.presentation.hotel.HotelFragment"
         android:label="fragment_hotel"
         tools:layout="@layout/fragment_hotel" >
         <action
