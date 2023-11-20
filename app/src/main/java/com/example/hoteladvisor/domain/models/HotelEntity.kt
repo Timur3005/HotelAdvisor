@@ -6,7 +6,7 @@ data class HotelEntity(
     val address: String?,
     val minPrice: Int?,
     val priceFor: String?,
-    val rating: Double?,
+    val rating: Int?,
     val ratingName: String?,
     val hotelDescription: String?,
     val peculiarities: List<String>?,

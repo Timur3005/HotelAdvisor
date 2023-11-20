@@ -12,7 +12,7 @@ data class HotelDto(
     val name: String?,
     @SerializedName("adress")
     @Expose
-    val address: String?,
+    val adress: String?,
     @SerializedName("minimal_price")
     @Expose
     val minPrice: Int?,
@@ -21,7 +21,7 @@ data class HotelDto(
     val priceFor: String?,
     @SerializedName("rating")
     @Expose
-    val rating: Double?,
+    val rating: Int?,
     @SerializedName("rating_name")
     @Expose
     val ratingName: String?,

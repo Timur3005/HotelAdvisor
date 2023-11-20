@@ -5,5 +5,5 @@ import javax.inject.Inject
 
 class GetHotelRoomsUseCase @Inject constructor(
     private val repository: HotelRepository) {
-    operator fun invoke() = repository.getHotelRooms()
+    suspend operator fun invoke() = repository.getHotelRooms()
 }

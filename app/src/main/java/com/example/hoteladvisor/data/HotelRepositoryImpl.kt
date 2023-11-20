@@ -2,12 +2,14 @@ package com.example.hoteladvisor.data
 
 import com.example.hoteladvisor.data.mapper.Mapper
 import com.example.hoteladvisor.data.remote.ApiService
+import com.example.hoteladvisor.di.ApplicationScope
 import com.example.hoteladvisor.domain.HotelRepository
 import com.example.hoteladvisor.domain.models.HotelEntity
 import com.example.hoteladvisor.domain.models.HotelRoomsEntity
 import com.example.hoteladvisor.domain.models.ReservationEntity
 import javax.inject.Inject
 
+@ApplicationScope
 class HotelRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
     private val mapper: Mapper

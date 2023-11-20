@@ -3,16 +3,18 @@ package com.example.hoteladvisor.data.mapper
 import com.example.hoteladvisor.data.remote.models.HotelDto
 import com.example.hoteladvisor.data.remote.models.HotelRoomsDto
 import com.example.hoteladvisor.data.remote.models.ReservationDto
+import com.example.hoteladvisor.di.ApplicationScope
 import com.example.hoteladvisor.domain.models.HotelEntity
 import com.example.hoteladvisor.domain.models.HotelRoomsEntity
 import com.example.hoteladvisor.domain.models.ReservationEntity
 import javax.inject.Inject
 
+@ApplicationScope
 class Mapper @Inject constructor(){
     fun mapHotelDtoToHotelEntity(hotelDto: HotelDto) = HotelEntity(
         id = hotelDto.id,
         name = hotelDto.name,
-        address = hotelDto.address,
+        address = hotelDto.adress,
         minPrice = hotelDto.minPrice,
         priceFor = hotelDto.priceFor,
         rating = hotelDto.rating,

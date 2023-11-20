@@ -4,10 +4,10 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class AboutTheHotel(
-    @SerializedName("id")
+    @SerializedName("description")
     @Expose
     val hotelDescription: String?,
-    @SerializedName("id")
+    @SerializedName("peculiarities")
     @Expose
     val peculiarities: List<String>?
 )

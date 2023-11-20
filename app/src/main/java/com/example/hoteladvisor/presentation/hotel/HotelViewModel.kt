@@ -17,13 +17,13 @@ class HotelViewModel @Inject constructor(
     val process: LiveData<Boolean>
         get() = _process
 
-    private val _hotel = MutableLiveData<HotelEntity>()
-    val hotel: LiveData<HotelEntity>
+    private val _hotel = MutableLiveData<HotelEntity?>()
+    val hotel: MutableLiveData<HotelEntity?>
         get() = _hotel
 
     fun getHotel(){
         val job = viewModelScope.launch {
-            _hotel.value = getHotelUseCase()!!
+            _hotel.value = getHotelUseCase()
         }
         viewModelScope.launch {
             job.join()
