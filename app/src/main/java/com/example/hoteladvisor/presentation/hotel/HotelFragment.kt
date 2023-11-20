@@ -2,7 +2,6 @@ package com.example.hoteladvisor.presentation.hotel
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,11 +51,20 @@ class HotelFragment : Fragment() {
         viewModel.hotelState.observe(viewLifecycleOwner) {
             when (it) {
                 Loading -> {
-
+                    binding.progressBarLoading.visibility = View.VISIBLE
                 }
 
                 is ShowHotel -> {
-
+                    binding.progressBarLoading.visibility = View.GONE
+                    val hotel = it.hotelEntity
+                    with(binding){
+                        hotelName.text = hotel.name
+                        rating.text = hotel.rating.toString() + " " + hotel.ratingName
+                        address.text = hotel.address
+                        priceFrom.text = "от " + hotel.minPrice
+                        priceForIt.text = hotel.priceFor
+                        description.text = hotel.hotelDescription
+                    }
                 }
             }
         }
