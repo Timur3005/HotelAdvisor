@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.hoteladvisor.HotelApp
+import com.example.hoteladvisor.R
 import com.example.hoteladvisor.databinding.FragmentHotelBinding
 import com.example.hoteladvisor.presentation.ViewModelFactory
 import javax.inject.Inject
@@ -49,6 +51,9 @@ class HotelFragment : Fragment() {
         viewModel.getHotel()
         observeViewModel()
         binding.viewPagerHotelImages.adapter = imagesAdapter
+        binding.moveToRoomChoosing.setOnClickListener {
+            navigateToHotelRoomsFragment()
+        }
     }
 
     private fun observeViewModel() {
@@ -73,6 +78,10 @@ class HotelFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun navigateToHotelRoomsFragment(){
+        findNavController().navigate(R.id.action_hotelFragment_to_hotelRoomsFragment)
     }
 
     override fun onDestroyView() {
