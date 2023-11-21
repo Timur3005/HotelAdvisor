@@ -20,7 +20,6 @@ class HotelRoomsAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: HotelRoomsViewHolder, position: Int) {
         val room = getItem(position)
-        println(room)
         imagesAdapter.submitList(room.images)
         with(holder.binding){
             roomImages.offscreenPageLimit = 2
