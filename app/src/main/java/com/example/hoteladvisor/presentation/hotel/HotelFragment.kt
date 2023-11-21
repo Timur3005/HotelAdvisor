@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.hoteladvisor.HotelApp
 import com.example.hoteladvisor.R
 import com.example.hoteladvisor.databinding.FragmentHotelBinding

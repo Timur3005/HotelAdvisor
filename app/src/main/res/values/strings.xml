@@ -15,4 +15,5 @@
     <string name="info_for_client">Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту</string>
     <string name="super_btn">Супер!</string>
     <string name="about_hotel">Об отеле</string>
+    <string name="choose_room">Выбрать номер</string>
 </resources>

@@ -5,7 +5,7 @@ import com.example.hoteladvisor.data.remote.models.HotelRoomsDto
 import com.example.hoteladvisor.data.remote.models.ReservationDto
 import com.example.hoteladvisor.di.ApplicationScope
 import com.example.hoteladvisor.domain.models.HotelEntity
-import com.example.hoteladvisor.domain.models.HotelRoomsEntity
+import com.example.hoteladvisor.domain.models.HotelRoomEntity
 import com.example.hoteladvisor.domain.models.ReservationEntity
 import javax.inject.Inject
 
@@ -24,7 +24,7 @@ class Mapper @Inject constructor(){
         images = hotelDto.images
     )
 
-    fun mapHotelRoomsDtoToHotelRoomsEntity(hotelRoomsDto: HotelRoomsDto) = HotelRoomsEntity(
+    fun mapHotelRoomsDtoToHotelRoomsEntity(hotelRoomsDto: HotelRoomsDto) = HotelRoomEntity(
         id = hotelRoomsDto.id,
         name = hotelRoomsDto.name,
         price = hotelRoomsDto.price,
