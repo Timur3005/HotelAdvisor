@@ -27,6 +27,11 @@
             app:destination="@id/reservationFragment"
             app:popUpTo="@id/reservationFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="hotel_name"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="Отель" />
     </fragment>
     <fragment
         android:id="@+id/reservationFragment"

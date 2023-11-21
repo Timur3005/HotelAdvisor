@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hoteladvisor.HotelApp
 import com.example.hoteladvisor.databinding.FragmentHotelRoomsBinding
@@ -15,6 +16,8 @@ import com.example.hoteladvisor.presentation.ViewModelFactory
 import javax.inject.Inject
 
 class HotelRoomsFragment : Fragment() {
+
+    private val args by navArgs<HotelRoomsFragmentArgs>()
 
     private var _binding: FragmentHotelRoomsBinding? = null
     private val binding: FragmentHotelRoomsBinding
@@ -52,9 +55,15 @@ class HotelRoomsFragment : Fragment() {
         binding.buttonPopBackstack.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.hotelName.text = args.hotelName
+        println(args.hotelName)
+        setupRecycler()
+        observeViewModels()
+    }
+
+    private fun setupRecycler() {
         binding.listOfRooms.layoutManager = LinearLayoutManager(context)
         binding.listOfRooms.adapter = roomsAdapter
-        observeViewModels()
     }
 
     private fun observeViewModels(){

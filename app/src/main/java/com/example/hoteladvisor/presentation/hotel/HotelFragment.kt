@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.hoteladvisor.HotelApp
-import com.example.hoteladvisor.R
 import com.example.hoteladvisor.databinding.FragmentHotelBinding
 import com.example.hoteladvisor.presentation.ViewModelFactory
 import javax.inject.Inject
 
 class HotelFragment : Fragment() {
+
+    private lateinit var hotelName: String
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -67,6 +67,7 @@ class HotelFragment : Fragment() {
                 is ShowHotel -> {
                     binding.progressBarLoading.visibility = View.GONE
                     val hotel = it.hotelEntity
+                    hotelName = hotel.name ?: "Отель"
                     with(binding){
                         hotelName.text = hotel.name
                         rating.text = hotel.rating.toString() + " " + hotel.ratingName
@@ -82,7 +83,8 @@ class HotelFragment : Fragment() {
     }
 
     private fun navigateToHotelRoomsFragment(){
-        findNavController().navigate(R.id.action_hotelFragment_to_hotelRoomsFragment)
+        findNavController()
+            .navigate(HotelFragmentDirections.actionHotelFragmentToHotelRoomsFragment(hotelName))
     }
 
     override fun onDestroyView() {
