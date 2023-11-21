@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hoteladvisor.HotelApp
 import com.example.hoteladvisor.databinding.FragmentHotelRoomsBinding
 import com.example.hoteladvisor.presentation.ViewModelFactory
-import com.example.hoteladvisor.presentation.hotel.ImagesAdapter
 import javax.inject.Inject
 
 class HotelRoomsFragment : Fragment() {
