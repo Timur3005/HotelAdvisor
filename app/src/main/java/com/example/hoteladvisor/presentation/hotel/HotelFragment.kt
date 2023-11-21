@@ -17,6 +17,9 @@ class HotelFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
+    @Inject
+    lateinit var imagesAdapter: ImagesAdapter
+
     private val component by lazy {
         (activity?.application as HotelApp).component
     }
@@ -45,6 +48,7 @@ class HotelFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory)[HotelViewModel::class.java]
         viewModel.getHotel()
         observeViewModel()
+        binding.viewPagerHotelImages.adapter = imagesAdapter
     }
 
     private fun observeViewModel() {
@@ -64,6 +68,7 @@ class HotelFragment : Fragment() {
                         priceFrom.text = "от " + hotel.minPrice
                         priceForIt.text = hotel.priceFor
                         description.text = hotel.hotelDescription
+                        imagesAdapter.submitList(hotel.images)
                     }
                 }
             }
