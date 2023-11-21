@@ -1,18 +1,42 @@
 package com.example.hoteladvisor.presentation.hotelrooms
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.hoteladvisor.HotelApp
 import com.example.hoteladvisor.databinding.FragmentHotelRoomsBinding
+import com.example.hoteladvisor.presentation.ViewModelFactory
+import com.example.hoteladvisor.presentation.hotel.ImagesAdapter
+import javax.inject.Inject
 
 class HotelRoomsFragment : Fragment() {
 
     private var _binding: FragmentHotelRoomsBinding? = null
     private val binding: FragmentHotelRoomsBinding
         get() = _binding ?: throw RuntimeException("binding doesn't exist")
+
+    private val component by lazy {
+        (activity?.application as HotelApp).component
+    }
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private lateinit var viewModel: HotelRoomsViewModel
+
+    @Inject
+    lateinit var roomsAdapter: HotelRoomsAdapter
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        component.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,8 +48,27 @@ class HotelRoomsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this, viewModelFactory)[HotelRoomsViewModel::class.java]
+        viewModel.loadRooms()
         binding.buttonPopBackstack.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.listOfRooms.layoutManager = LinearLayoutManager(context)
+        binding.listOfRooms.adapter = roomsAdapter
+        observeViewModels()
+    }
+
+    private fun observeViewModels(){
+        viewModel.state.observe(viewLifecycleOwner){
+            when(it){
+                Loading -> {
+
+                }
+                is ShowRooms -> {
+                    roomsAdapter.submitList(it.rooms)
+                    println(it.rooms)
+                }
+            }
         }
     }
 

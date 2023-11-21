@@ -31,6 +31,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"/>
             <Button
+                android:clickable="false"
+                android:text="@string/about_the_room"
                 android:textSize="16sp"
                 android:textColor="#0D72FF"
                 android:background="@android:color/transparent"

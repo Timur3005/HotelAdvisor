@@ -16,4 +16,5 @@
     <string name="super_btn">Супер!</string>
     <string name="about_hotel">Об отеле</string>
     <string name="choose_room">Выбрать номер</string>
+    <string name="about_the_room">Подробнее о номере</string>
 </resources>
