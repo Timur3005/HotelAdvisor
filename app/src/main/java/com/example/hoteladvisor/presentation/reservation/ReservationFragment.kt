@@ -10,7 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.hoteladvisor.HotelApp
 import com.example.hoteladvisor.databinding.FragmentReservationBinding
 import com.example.hoteladvisor.presentation.ViewModelFactory
+import java.text.SimpleDateFormat
+import java.util.Locale
 import javax.inject.Inject
+import kotlin.math.abs
+import kotlin.time.Duration.Companion.milliseconds
 
 class ReservationFragment : Fragment() {
 
@@ -52,12 +56,41 @@ class ReservationFragment : Fragment() {
         viewModel.state.observe(viewLifecycleOwner){
             when(it){
                 Loading -> {
-
+                    binding.progressBarLoading.visibility = View.VISIBLE
                 }
                 is ShowReservation -> {
+                    val reservation = it.reservation
+                    with(binding){
+                        rating.text = reservation.hotelRating?.toString() + " " + reservation.ratingName
+                        hotelName.text = reservation.hotelName
+                        address.text = reservation.hotelAddress
+                        progressBarLoading.visibility = View.GONE
+                        flyFrom.text = reservation.departure
+                        country.text = reservation.arrivalCountry
+                        dates.text = reservation.tourDateStart + " - " + reservation.tourDateStop
+                        countOfNights.text =
+                            (daysBetweenDates(
+                                reservation.tourDateStart,
+                                reservation.tourDateStop)-1).toString()+ " ночей"
+
+                        hotel.text = reservation.hotelName
+                        room.text = reservation.roomDescription
+                        nutrition.text = reservation.nutrition
+                    }
 
                 }
             }
         }
+    }
+
+    private fun daysBetweenDates(date1: String?, date2: String?): Int {
+        val dateFormat = SimpleDateFormat("dd.MM.yy", Locale.getDefault())
+        val parsedDate1 = date1?.let { dateFormat.parse(it) } ?: return 0
+        val parsedDate2 = date2?.let { dateFormat.parse(it) } ?: return 0
+
+        val timeDiffMillis = abs(parsedDate2.time - parsedDate1.time)
+
+        val duration = timeDiffMillis.milliseconds
+        return duration.inWholeDays.toInt()
     }
 }
