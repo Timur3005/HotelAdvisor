@@ -17,6 +17,12 @@ import javax.inject.Inject
 
 class HotelRoomsFragment : Fragment() {
 
+    @Inject
+    lateinit var roomsAdapter: HotelRoomsAdapter
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
     private val args by navArgs<HotelRoomsFragmentArgs>()
 
     private var _binding: FragmentHotelRoomsBinding? = null
@@ -27,13 +33,7 @@ class HotelRoomsFragment : Fragment() {
         (activity?.application as HotelApp).component
     }
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
     private lateinit var viewModel: HotelRoomsViewModel
-
-    @Inject
-    lateinit var roomsAdapter: HotelRoomsAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -70,9 +70,10 @@ class HotelRoomsFragment : Fragment() {
         viewModel.state.observe(viewLifecycleOwner){
             when(it){
                 Loading -> {
-
+                    binding.progressBarLoading.visibility = View.VISIBLE
                 }
                 is ShowRooms -> {
+                    binding.progressBarLoading.visibility = View.GONE
                     roomsAdapter.submitList(it.rooms)
                     println(it.rooms)
                 }

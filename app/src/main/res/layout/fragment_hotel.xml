@@ -94,10 +94,11 @@
                 android:text="@string/about_hotel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_of_peculiarities"
+            <GridLayout
+                android:id="@+id/peculiarities"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginBottom="16dp"/>
             <TextView
                 android:id="@+id/description"

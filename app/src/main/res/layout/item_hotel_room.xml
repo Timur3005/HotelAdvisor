@@ -25,11 +25,13 @@
                 style="@style/HotelOrRoomName"
                 android:layout_marginBottom="16dp"/>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <GridLayout
                 android:id="@+id/peculiarities"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginBottom="16dp"/>
+
             <Button
                 android:clickable="false"
                 android:text="@string/about_the_room"

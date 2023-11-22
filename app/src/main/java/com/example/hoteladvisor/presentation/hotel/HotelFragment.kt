@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -48,6 +50,7 @@ class HotelFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupGridLayout()
         viewModel = ViewModelProvider(this, viewModelFactory)[HotelViewModel::class.java]
         viewModel.getHotel()
         observeViewModel()
@@ -55,6 +58,12 @@ class HotelFragment : Fragment() {
         binding.moveToRoomChoosing.setOnClickListener {
             navigateToHotelRoomsFragment()
         }
+    }
+
+    private fun setupGridLayout() {
+        binding.peculiarities.columnCount = GridLayout.IMPORTANT_FOR_AUTOFILL_YES
+        binding.peculiarities.rowCount = GridLayout.IMPORTANT_FOR_AUTOFILL_YES
+        binding.peculiarities.alignmentMode = GridLayout.ALIGN_BOUNDS
     }
 
     private fun observeViewModel() {
@@ -77,7 +86,18 @@ class HotelFragment : Fragment() {
                         description.text = hotel.hotelDescription
                         imagesAdapter.submitList(hotel.images)
                     }
+                    setupPeculiarities(hotel.peculiarities)
                 }
+            }
+        }
+    }
+
+    private fun setupPeculiarities(peculiarities: List<String>?) {
+        if (!peculiarities.isNullOrEmpty()) {
+            for (i in peculiarities) {
+                val textView = TextView(context)
+                textView.text = i
+                binding.peculiarities.addView(textView)
             }
         }
     }

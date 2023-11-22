@@ -2,6 +2,8 @@ package com.example.hoteladvisor.presentation.hotelrooms
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.GridLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import com.example.hoteladvisor.databinding.ItemHotelRoomBinding
 import com.example.hoteladvisor.domain.models.HotelRoomEntity
@@ -27,6 +29,20 @@ class HotelRoomsAdapter @Inject constructor(
             roomName.text = room.name
             price.text = room.price?.toString()
             pricePer.text = room.pricePer
+            setupPeculiarities(room.peculiarities, this)
+        }
+    }
+
+    private fun setupPeculiarities(peculiarities: List<String>?, binding: ItemHotelRoomBinding) {
+        binding.peculiarities.columnCount = GridLayout.IMPORTANT_FOR_AUTOFILL_YES
+        binding.peculiarities.rowCount = GridLayout.IMPORTANT_FOR_AUTOFILL_YES
+        binding.peculiarities.alignmentMode = GridLayout.ALIGN_BOUNDS
+        if (!peculiarities.isNullOrEmpty()) {
+            for (i in peculiarities) {
+                val textView = TextView(binding.root.context)
+                textView.text = i
+                binding.peculiarities.addView(textView)
+            }
         }
     }
 
