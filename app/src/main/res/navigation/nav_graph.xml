@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservationFragment"
-        android:name="com.example.hoteladvisor.presentation.ReservationFragment"
+        android:name="com.example.hoteladvisor.presentation.reservation.ReservationFragment"
         android:label="fragment_reservation"
         tools:layout="@layout/fragment_reservation" >
         <action
