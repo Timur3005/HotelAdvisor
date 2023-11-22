@@ -12,11 +12,12 @@ class HotelRoomsViewModel @Inject constructor(
     private val getHotelRoomsUseCase: GetHotelRoomsUseCase
 ): ViewModel() {
 
-    private val _state = MutableLiveData<HotelRoomsState>(Loading)
+    private val _state = MutableLiveData<HotelRoomsState>()
     val state: LiveData<HotelRoomsState>
         get() = _state
 
     fun loadRooms(){
+        _state.value = Loading
         viewModelScope.launch {
             val rooms = getHotelRoomsUseCase()
             _state.value = ShowRooms(rooms)
