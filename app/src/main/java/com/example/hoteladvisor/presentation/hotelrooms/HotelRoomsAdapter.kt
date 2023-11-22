@@ -14,6 +14,8 @@ class HotelRoomsAdapter @Inject constructor(
     private val imagesAdapter: ImagesAdapter
 ): ListAdapter<HotelRoomEntity, HotelRoomsViewHolder>(HotelRoomCallback) {
 
+    var clickToChooseRoom: (() -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotelRoomsViewHolder {
         val binding = ItemHotelRoomBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
@@ -30,6 +32,9 @@ class HotelRoomsAdapter @Inject constructor(
             price.text = room.price?.toString()
             pricePer.text = room.pricePer
             setupPeculiarities(room.peculiarities, this)
+            moveToNextStep.setOnClickListener {
+                clickToChooseRoom?.invoke()
+            }
         }
     }
 

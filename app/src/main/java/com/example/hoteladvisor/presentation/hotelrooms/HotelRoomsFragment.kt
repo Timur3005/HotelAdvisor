@@ -59,6 +59,14 @@ class HotelRoomsFragment : Fragment() {
         println(args.hotelName)
         setupRecycler()
         observeViewModels()
+        setupChooseRoomClickListener()
+    }
+
+    private fun setupChooseRoomClickListener(){
+        roomsAdapter.clickToChooseRoom = {
+            findNavController()
+                .navigate(HotelRoomsFragmentDirections.actionHotelRoomsFragmentToReservationFragment())
+        }
     }
 
     private fun setupRecycler() {
