@@ -5,7 +5,7 @@ import com.example.hoteladvisor.data.remote.ApiService
 import com.example.hoteladvisor.di.ApplicationScope
 import com.example.hoteladvisor.domain.HotelRepository
 import com.example.hoteladvisor.domain.models.HotelEntity
-import com.example.hoteladvisor.domain.models.HotelRoomsEntity
+import com.example.hoteladvisor.domain.models.HotelRoomEntity
 import com.example.hoteladvisor.domain.models.ReservationEntity
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ class HotelRepositoryImpl @Inject constructor(
         return mapper.mapHotelDtoToHotelEntity(apiService.getHotel())
     }
 
-    override suspend fun getHotelRooms(): List<HotelRoomsEntity> {
+    override suspend fun getHotelRooms(): List<HotelRoomEntity> {
         return apiService.getRooms().rooms?.map {
             mapper.mapHotelRoomsDtoToHotelRoomsEntity(it)
         } ?: throw RuntimeException("container is empty")

@@ -1,113 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.hotel.HotelFragment"
-    android:orientation="vertical"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:id="@+id/progressBar_loading"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            style="@style/Headline"
-            android:id="@+id/text_view_hotel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hotel"
-            android:gravity="center"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"/>
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/view_pager_hotel_images"
-            android:layout_width="match_parent"
-            android:layout_height="257dp"
-            android:layout_marginBottom="16dp"/>
-        <TextView
-            style="@style/ForRating"
-            android:textSize="16sp"
-            android:id="@+id/rating"
-            android:text="5 превосходно"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/design_default_color_on_primary"
-            android:layout_marginBottom="16dp"/>
-        <TextView
-            style="@style/HotelOrRoomName"
-            android:id="@+id/hotel_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"/>
-        <TextView
-            android:text="egypt"
-            android:id="@+id/address"
-            style="@style/ForAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:clickable="false"
-            android:layout_marginBottom="16dp"/>
+    <!-- ScrollView с остальными элементами -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
+            android:orientation="vertical">
             <TextView
-                android:text="от 134000"
-                style="@style/Price"
-                android:id="@+id/priceFrom"
+                style="@style/Headline"
+                android:id="@+id/text_view_hotel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hotel"
+                android:gravity="center"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"/>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager_hotel_images"
+                android:layout_width="match_parent"
+                android:layout_height="257dp"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:id="@+id/rating"
+                style="@style/ForRating"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@color/design_default_color_on_primary"
+                android:textSize="16sp" />
+            <TextView
+                style="@style/HotelOrRoomName"
+                android:id="@+id/hotel_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"/>
+            <TextView
+                android:id="@+id/address"
+                style="@style/ForAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:clickable="false"
+                android:layout_marginBottom="16dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+                <TextView
+                    style="@style/Price"
+                    android:id="@+id/priceFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/priceForIt"
+                    style="@style/Hints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/HotelOrRoomName"
+                android:text="@string/about_hotel"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <GridLayout
+                android:id="@+id/peculiarities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp"/>
             <TextView
-                android:layout_marginLeft="5dp"
-                android:id="@+id/priceForIt"
-                style="@style/Hints"
-                android:text="с перелетом"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ForDescriptions"/>
+            <Button
+                android:text="Удобства"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ForDescriptions"/>
+            <Button
+                android:text="Что включено"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ForDescriptions"/>
+            <Button
+                android:text="Что не включено"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                style="@style/ForDescriptions"/>
+            <Button
+                android:id="@+id/move_to_room_choosing"
+                android:text="@string/move_to_room_choosing"
+                android:layout_width="match_parent"
+                style="@style/ForButtons"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <TextView
-            style="@style/HotelOrRoomName"
-            android:text="Об отеле"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list_of_peculiarities"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="16dp"/>
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/ForDescriptions"/>
-        <Button
-            android:text="Удобства"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/ForDescriptions"/>
-        <Button
-            android:text="Что включено"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/ForDescriptions"/>
-        <Button
-            android:text="Что не включено"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            style="@style/ForDescriptions"/>
-        <Button
-            android:id="@+id/move_to_room_choosing"
-            android:text="@string/move_to_room_choosing"
-            android:layout_width="match_parent"
-            style="@style/ForButtons"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+    </ScrollView>
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

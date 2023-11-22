@@ -1,6 +1,6 @@
 package com.example.hoteladvisor.domain.models
 
-data class HotelRoomsEntity(
+data class HotelRoomEntity(
     val id: Int?,
     val name: String?,
     val price: Int?,
